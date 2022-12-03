@@ -20,8 +20,8 @@ const Auth = {
             }
 
         } else {
-          res.status(403).send({message: "You're not authenticated, please login first"})
-            console.log("You're not authenticated");
+          res.status(403).send({message: 'Youre not authenticated, please login first'})
+            console.log('Youre not authenticated');
         }
     
   }

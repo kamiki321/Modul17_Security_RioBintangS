@@ -64,6 +64,7 @@ const login = async(req, res, next) => {
     }
 }
 
+
 const logout = async(req, res, next) => {
                 
     try {
@@ -81,21 +82,14 @@ const logout = async(req, res, next) => {
 const verify = async(req, res, next) => {
     try {
         // 13. membuat verify
-        const email = req.verified.email;
-        //const {email} = req.body
-        const foundUser = await db.query(SELECT * FROM unhan_modul17 WHERE email=$1 LIMIT 1, [email])
-        return res.status(200).json({
-            id       : foundUser.rows[0].id,
-            username : foundUser.rows[0].username,
-            email    : foundUser.rows[0].email,
-            password : foundUser.rows[0].password
-        })
+        const data = req.verified
+        return res.status(200).json(data)
+        
     } catch (err) {
         console.log(err.message);
         return res.status(500).send(err)    
     }
 }
-
 module.exports = {
     register,
     login,

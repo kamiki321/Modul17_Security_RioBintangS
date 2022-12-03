@@ -1,7 +1,7 @@
 const express = require('express')
 const db = require('../db.config/db.config')
 const jwt = require('jsonwebtoken');
-
+// const Auth = require('./auth')
 
 require("dotenv").config();
 const bcrypt = require('bcrypt');
@@ -15,7 +15,7 @@ const register = async(req, res, next) => {
     
     // 8. Silahkan coding agar pengguna bisa menyimpan semua data yang diinputkan ke dalam database
     try {
-        db.query('INSERT INTO unhan_modul_17(username,email,password) VALUES ($1,$2,$3);',[username,email,hashed_pwd])
+        db.query('NSERT INTO unhan_modul_17(username,email,password) VALUES ($1,$2,$3);',[username,email,hashed_pwd])
         res.send('data added succesfully!')
         
     } catch (error) {
@@ -64,7 +64,6 @@ const login = async(req, res, next) => {
     }
 }
 
-
 const logout = async(req, res, next) => {
                 
     try {
@@ -90,6 +89,7 @@ const verify = async(req, res, next) => {
         return res.status(500).send(err)    
     }
 }
+
 module.exports = {
     register,
     login,

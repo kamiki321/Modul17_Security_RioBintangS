@@ -4,22 +4,17 @@ const jwt = require('jsonwebtoken');
 SECRET = process.env.SECRET
 const Auth = {
     verifyToken(req, res, next){
-//         const {token} = req.cookies['JWT']
-//         const {token} = req.body
-        token = req.body.token
-       
+      token = req.body.token
+    
         if (token) {
             // 12. Lalukan jwt verify 
-            const verified = jwt.verify(token, SECRET);
-
+            const verified = jwt.verify(token, SECRET)
             if(verified){
-                console.log("Successfully Verified");
-                return next();
-            }else{
-                // Access Denied
-                return res.status(401).send(error);
+              console.log("Verifikasi Berhasil")
+              return next()
+            } else {
+              return res.staatus(401).send(error)
             }
-
         } else {
           res.status(403).send({message: 'Youre not authenticated, please login first'})
             console.log('Youre not authenticated');

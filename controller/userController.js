@@ -90,7 +90,7 @@ const verify = async (req, res, next) => {
     // 13. membuat verify
     const data = req.verified;
 
-    return res.status(200).json({
+    return res.status(200).send({
       data,
       // id: user[0].id,
       // username: user[0].username,

@@ -79,7 +79,7 @@ const logout = async(req, res, next) => {
 }
 
 const verify = async (req, res, next) => {
-  const { email } = req.body;
+  const email = req.body;
   const theRow = await db.query(
     "SELECT * FROM unhan_modul_17 WHERE email=$1;",
     [email]

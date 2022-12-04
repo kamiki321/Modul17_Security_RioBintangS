@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 SECRET = process.env.SECRET
 const Auth = {
     verifyToken(req, res, next){
-        // const {token = req.cookies['JWT']
-        const {token} = req.body
+        const {token} = req.cookies['JWT']
+//         const {token} = req.body
        
         if (token) {
             // 12. Lalukan jwt verify 

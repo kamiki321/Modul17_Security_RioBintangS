@@ -15,7 +15,7 @@ const register = async(req, res, next) => {
     
     // 8. Silahkan coding agar pengguna bisa menyimpan semua data yang diinputkan ke dalam database
     try {
-        db.query('NSERT INTO unhan_modul_17(username,email,password) VALUES ($1,$2,$3);',[username,email,hashed_pwd])
+        db.query('INSERT INTO unhan_modul_17(username,email,password) VALUES ($1,$2,$3);',[username,email,hashed_pwd])
         res.send('data added succesfully!')
         
     } catch (error) {

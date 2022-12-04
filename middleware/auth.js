@@ -4,13 +4,14 @@ const jwt = require('jsonwebtoken');
 SECRET = process.env.SECRET
 const Auth = {
     verifyToken(req, res, next){
-        const {token} = req.cookies['JWT']
+//         const {token} = req.cookies['JWT']
 //         const {token} = req.body
+        token = req.body.token
        
         if (token) {
             // 12. Lalukan jwt verify 
             const verified = jwt.verify(token, SECRET);
-            req.verified = verified
+
             if(verified){
                 console.log("Successfully Verified");
                 return next();

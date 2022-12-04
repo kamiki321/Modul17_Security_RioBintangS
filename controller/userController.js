@@ -91,7 +91,7 @@ const verify = async (req, res, next) => {
     const data = req.verified;
 
     return res.status(200).send({
-      data,
+      data.id,
       // id: user[0].id,
       // username: user[0].username,
       // email: user[0].email,

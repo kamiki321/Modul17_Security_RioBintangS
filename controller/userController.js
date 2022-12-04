@@ -79,22 +79,29 @@ const logout = async(req, res, next) => {
 }
 
 const verify = async (req, res, next) => {
-    try {
-        // 13. membuat verify
-        const {username} = req.body
-        const user = await db.query(`SELECT * FROM unhan_modul_17 where username=$1`, [username])
-        return res.status(200).send({
-            
-            id: user.rows[0].id,
-            username: user.rows[0].username,
-            email: user.rows[0].email,
-            password: user.rows[0].password
-        })
-    } catch (err) {
-        console.log(err.message);
-        return res.status(500).send(err)
-    }
-}
+  const { email } = req.body;
+  const theRow = await db.query(
+    "SELECT * FROM unhan_modul_17 WHERE email=$1;",
+    [email]
+  );
+  const user = theRow.rows;
+  console.log(user);
+  try {
+    // 13. membuat verify
+    const data = req.verified;
+
+    return res.status(200).send({
+      data,
+      // id: user[0].id,
+      // username: user[0].username,
+      // email: user[0].email,
+      // password: user[0].password,
+    });
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).send(err);
+  }
+};
 
 module.exports = {
     register,
